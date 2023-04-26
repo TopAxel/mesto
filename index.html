@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <link rel="stylesheet" href="./pages/index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>mesto Russia</title>
+</head>
+
+<body class="page">
+    <!--контейнер-->
+    <div class="page__container">
+        <!--шапка страницы блок header-->
+        <header class="header">
+            <!--логотип-->
+            <img class="header__logo" src="./image/logo/Vector.svg" alt="логотип mesto Russia">
+        </header>
+        <main class="content">
+            <!--секция profile-->
+            <section class="profile">
+                <!--фото (аватар) -->
+                <img class="profile__avatar" src="./image/avatar/avatar.jpg" alt="фото профиля">
+                <!--информация-->
+                <div class="profile__info">
+                    <!--имя-->
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <!--кнопка редактирования-->
+                    <button class="profile__edit-button" type="button" aria-label="редактировать профиль"></button>
+                    <!--описание-->
+                    <p class="profile__subtitle">Исследователь океана</p>
+                </div>
+                <!--кнопка добовления карточки-->
+                <button class="profile__add-button" type="button" aria-label="добавить карточку"></button>
+            </section>
+            <!-- секция elements -->
+            <section class="elements">
+                <!-- блок element c карточками-->
+                <ul class="element">
+                    <!-- карточка -->
+                    <li class="element__card">
+                        <!-- картинка в карточке -->
+                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1088404-unsplash (1).jpg"
+                            alt="Карачаевск">
+                        <!-- подпись -->
+                        <h2 class="element__title">Карачаевск</h2>
+                        <!-- Лайк -->
+                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
+                    </li>
+                    <li class="element__card">
+                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1404681-unsplash.jpg"
+                            alt="Гора Эльбрус">
+                        <h2 class="element__title">Гора Эльбрус</h2>
+                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
+                    </li>
+                    <li class="element__card">
+                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1556355-unsplash.png"
+                            alt="Домбай">
+                        <h2 class="element__title">Домбай</h2>
+                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
+                    </li>
+                    <li class="element__card">
+                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1404681-unsplash.jpg"
+                            alt="Гора Эльбрус">
+                        <h2 class="element__title">Гора Эльбрус</h2>
+                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
+                    </li>
+                    <li class="element__card">
+                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1556355-unsplash.png"
+                            alt="Домбай">
+                        <h2 class="element__title">Домбай</h2>
+                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
+                    </li>
+                    <li class="element__card">
+                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1088404-unsplash (1).jpg"
+                            alt="Карачаевск">
+                        <h2 class="element__title">Карачаево-Черкессия</h2>
+                        <button class="element__like-icon element__like-icon_active" type="button"
+                            aria-label="нравится"></button>
+                    </li>
+                </ul>
+            </section>
+        </main>
+        <!--footer-->
+        <footer class="footer">
+            <p class="footer__other">© 2023 Mesto Russia</p>
+        </footer>
+    </div>
+    <!--Попап-->
+    <div class="popup popup_opened">
+        <!--контейнер-->
+        <div class="popup__conteiner">
+            <form class="form" action="#">
+                <!--название попапа-->
+                <h2 class="form__title">Редактировать профиль</h2>
+                <!--формы для заполнения-->
+                <fieldset class="form__edit">
+                    <input class="form__field" type="text" id="user-name" name="user-name" placeholder="Имя">
+                    <input class="form__field" type="text" id="user-job" name="user-job" placeholder="Профессия">
+                </fieldset>
+                <!--кнопка сохранить-->
+                <button class="form__submit-button" type="submit">Сохранить</button>
+            </form>
+            <!--кнопка закрыть-->
+            <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
+        </div>
+    </div>
+
+</body>
+<!--подключение JS-->
+<script src="./scripts/script.js"></script>
+
+</html>

@@ -1,0 +1,15 @@
+.element__like-icon {
+    width: 22px;
+    height: 19px;
+    background-image: url(../../../image/like/Vector.svg);
+    border: 0;
+    background-color: #ffffff;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 20px;
+}
+
+.element__like-icon:hover {
+    opacity: 0.6;
+    transition: all .1s ease-in;
+}

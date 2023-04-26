@@ -1,0 +1,12 @@
+.element__card {
+    min-height: 361px;
+    list-style-type: none;
+    margin: 0;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+}
