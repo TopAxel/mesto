@@ -2,16 +2,20 @@
     max-width: 358px;
     height: 50px;
     background: #000000;
+    border: 0;
     border-radius: 2px;
     color: #FFFFFF;
     margin: 0;
     padding: 0;
     cursor: pointer;
+    font-style: normal;
+    font-weight: 400;
     font-size: 18px;
-    
+    line-height: 1.2;
+    margin-top: 48px;
 }
 
-.form__submit-button:hover{
+.form__submit-button:hover {
     opacity: 0.8;
     transition: all .1s ease-in;
 }
@@ -19,5 +23,7 @@
 @media screen and (max-width:549px) {
     .form__submit-button {
         font-size: 14px;
+        line-height: 0.9;
+        margin-top: 45px;
     }
 }

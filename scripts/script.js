@@ -1,61 +1,32 @@
-// кнопка редактирование профиля
-const editProfileButton = document.querySelector('.profile__edit-button');
-editProfileButton.addEventListener('click', function () {
-    const editPopup = document.querySelector('.popup');
-    editPopup.classList.remove('popup_opened');
-});
-// кнопка закрытитя профиля 
-const editPopupCloseButton = document.querySelector('.popup__close-icon');
-editPopupCloseButton.addEventListener('click', function () {
-    const editPopup = document.querySelector('.popup');
-    editPopup.classList.add('popup_opened');
-});
-// кнопка сохранить 
-const editPopupSubmintButton = document.querySelector('.form__submit-button');
-editPopupSubmintButton.addEventListener('click', function () {
-    const editPopup = document.querySelector('.popup');
-    editPopup.classList.add('popup_opened');
-});
+const buttonOpenProfile = document.querySelector('.profile__edit-button');
+const buttonCloseProfile = document.querySelector('.popup__close-icon');
+const buttonSubmitProfile = document.querySelector('.form__submit-button');
+const popupProfile = document.querySelector('.popup');
+const profileTitle = document.querySelector('.profile__title')
+const profileSubtitle = document.querySelector('.profile__subtitle')
+const popupName = popupProfile.querySelector('#user-name')
+const popupProfessional = popupProfile.querySelector('#user-job')
 
-// инпуты
-let profileTitle = 'Жак-Ив Кусто'
-let profileSubtitle = 'Исследователь океана'
-
-let userNameElement = document.querySelector('.profile__title');
-userNameElement.textContent = profileTitle;
-
-let userJobElement = document.querySelector('.profile__subtitle');
-userJobElement.textContent = profileSubtitle;
-
-let userName = document.querySelector('#user-name');
-userName.value = profileTitle;
-
-let userJob = document.querySelector('#user-job');
-userJob.value = profileSubtitle;
-
-// отправка формы
-let formElement = document.querySelector('.form__submit-button').onclick = handleFormSubmit;
-
-let nameInput = document.querySelector('#user-name');
-let jobInput = document.querySelector('#user-job');
-
-
-function handleFormSubmit(evt) {
-    evt.preventDefault();
-
-    let nameInput = document.querySelector('#user-name').value;
-    let jobInput = document.querySelector('#user-job').value;
-
-
-    let userNameElement = document.querySelector('.profile__title').textContent = nameInput;
-    let userJobElement = document.querySelector('.profile__subtitle').textContent = jobInput;
-
+function openPopupProfile() {
+    popupProfile.classList.add('popup_opened');
+    popupName.value = profileTitle.textContent
+    popupProfessional.value = profileSubtitle.textContent
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+function closePopupProfile() {
+    popupProfile.classList.remove('popup_opened');
+}
 
+function saveProfileData(e) {
+    e.preventDefault()
+    profileTitle.textContent = popupName.value
+    profileSubtitle.textContent = popupProfessional.value
+    closePopupProfile()
+}
 
-
+buttonSubmitProfile.addEventListener('click', saveProfileData);
+buttonOpenProfile.addEventListener('click', openPopupProfile);
+buttonCloseProfile.addEventListener('click', closePopupProfile);
 
 
 
