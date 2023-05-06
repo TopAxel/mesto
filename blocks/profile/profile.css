@@ -14,9 +14,7 @@
     .profile {
         margin-left: 27px;
         margin-right: 27px;
-        display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
     }
 }
