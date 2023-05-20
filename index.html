@@ -37,46 +37,6 @@
             <section class="elements">
                 <!-- блок element c карточками-->
                 <ul class="element">
-                    <!-- карточка -->
-                    <li class="element__card">
-                        <!-- картинка в карточке -->
-                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1088404-unsplash1.jpg"
-                            alt="Карачаевск">
-                        <!-- подпись -->
-                        <h2 class="element__title">Карачаевск</h2>
-                        <!-- Лайк -->
-                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
-                    </li>
-                    <li class="element__card">
-                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1404681-unsplash.jpg"
-                            alt="Гора Эльбрус">
-                        <h2 class="element__title">Гора Эльбрус</h2>
-                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
-                    </li>
-                    <li class="element__card">
-                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1556355-unsplash.png"
-                            alt="Домбай">
-                        <h2 class="element__title">Домбай</h2>
-                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
-                    </li>
-                    <li class="element__card">
-                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1404681-unsplash.jpg"
-                            alt="Гора Эльбрус">
-                        <h2 class="element__title">Гора Эльбрус</h2>
-                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
-                    </li>
-                    <li class="element__card">
-                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1556355-unsplash.png"
-                            alt="Домбай">
-                        <h2 class="element__title">Домбай</h2>
-                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
-                    </li>
-                    <li class="element__card">
-                        <img class="element__photo" src="./image/mask_group/kirill-pershin-1088404-unsplash1.jpg"
-                            alt="Карачаевск">
-                        <h2 class="element__title">Карачаево-Черкессия</h2>
-                        <button class="element__like-icon" type="button" aria-label="нравится"></button>
-                    </li>
                 </ul>
             </section>
         </main>
@@ -85,11 +45,11 @@
             <p class="footer__other">© 2023 Mesto Russia</p>
         </footer>
     </div>
-    <!--Попап-->
-    <div class="popup">
+    <!--Попап профиль-->
+    <div class="popup popup_edit_profile">
         <!--контейнер-->
         <div class="popup__conteiner">
-            <form class="form" name="profileEditPopupForm">
+            <form class="form" name="#">
                 <!--название попапа-->
                 <h2 class="form__title">Редактировать профиль</h2>
                 <!--формы для заполнения-->
@@ -105,7 +65,57 @@
             <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
         </div>
     </div>
+    <!--Попап добовление карточки-->
+    <div class="popup popup_add_card">
+        <!--контейнер-->
+        <div class="popup__conteiner">
+            <form class="form" name="#">
+                <!--название попапа-->
+                <h2 class="form__title">Новое место</h2>
+                <!--формы для заполнения-->
+                <fieldset class="form__edit">
+                    <input class="form__field" type="text" id="new-place" name="new-place" placeholder="Название"
+                        required>
+                    <input class="form__field" type="url" id="new-photo" name="new-photo"
+                        placeholder="Ссылка на картинку" required>
+                </fieldset>
+                <!--кнопка сохранить-->
+                <button class="form__submit-button" type="submit">Сохранить</button>
+            </form>
+            <!--кнопка закрыть-->
+            <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
+        </div>
+    </div>
+    <!--Попап открытая картинка-->
+    <div class="popup popup_open_image">
+        <!--контейнер-->
+        <div class="popup__conteiner">
+            <!--Картинка-->
+            <figure class="opened-image">
+                <img class="opened-image__image" src="#" alt="">
+                <!--Подпись под картинкой-->
+                <figcaption class="opened-image__signature"></figcaption>
+            </figure>
+            <!--кнопка закрыть-->
+            <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
+        </div>
+    </div>
+    <!--template-->
+    <template class="card__template">
+        <li class="element__card">
+            <!--кнопка удаление карточки-->
+            <button class="element__delete-icon" type="button" aria-label="удалить"></button>
+            <!-- картинка в карточке -->
+            <img class="element__photo" src="" alt="">
+            <!-- подпись -->
+            <h2 class="element__title"></h2>
+            <!-- Лайк -->
+            <button class="element__like-icon" type="button" aria-label="нравится"></button>
+        </li>
+    </template>
+
     <!--скрипт-->
+    <script src="./scripts/cards.js"></script>
     <script src="./scripts/script.js"></script>
 
 </body>
