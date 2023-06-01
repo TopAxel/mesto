@@ -25,10 +25,14 @@ const elementSignature = popupOpenImage.querySelector('.opened-image__signature'
 //функция закрытие/открытие попапа
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closeEscButton);
+    document.addEventListener('mousedown', clouseOverlayListener);
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeEscButton);
+    document.removeEventListener('mousedown', clouseOverlayListener);
 }
 
 // функция закрытия всех попапов
@@ -38,6 +42,22 @@ closeButtons.forEach((button) => {
     const popup = button.closest('.popup');
     button.addEventListener('click', () => closePopup(popup));
 });
+
+// Функция закрытия по кнопке Escape
+const closeEscButton = (evt) => {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
+    }
+}
+
+// Функция закрытия по оверлею 
+const clouseOverlayListener = function (evt) {
+    const openedPopup = document.querySelector('.popup_opened');
+    if (evt.target === openedPopup) {
+        closePopup(openedPopup);
+    }
+}
 
 
 // окно редактирования профиля

@@ -49,14 +49,19 @@
     <div class="popup popup_edit_profile">
         <!--контейнер-->
         <div class="popup__conteiner">
-            <form class="form" name="user-profile">
+            <form class="form" name="user-profile" novalidate>
                 <!--название попапа-->
                 <h2 class="form__title">Редактировать профиль</h2>
                 <!--формы для заполнения-->
                 <fieldset class="form__edit">
-                    <input class="form__field" type="text" id="user-name" name="user-name" placeholder="Имя" required>
+                    <input class="form__field" type="text" id="user-name" name="user-name" placeholder="Имя"
+                        minlength="2" maxlength="40" required>
+                    <!--сообщение об ошибке-->
+                    <span class="form__field-error" id="user-name-error"></span>
                     <input class="form__field" type="text" id="user-job" name="user-job" placeholder="Профессия"
-                        required>
+                        minlength="2" maxlength="200" required>
+                    <!--сообщение об ошибке-->
+                    <span class="form__field-error" id="user-job-error"></span>
                 </fieldset>
                 <!--кнопка сохранить-->
                 <button class="form__submit-button" type="submit">Сохранить</button>
@@ -65,19 +70,23 @@
             <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
         </div>
     </div>
-    <!--Попап добовление карточки-->
+    <!--Попап добавление карточки-->
     <div class="popup popup_add_card">
         <!--контейнер-->
         <div class="popup__conteiner">
-            <form class="form" name="add-plase">
+            <form class="form" name="add-plase" novalidate>
                 <!--название попапа-->
                 <h2 class="form__title">Новое место</h2>
                 <!--формы для заполнения-->
                 <fieldset class="form__edit">
                     <input class="form__field" type="text" id="new-place" name="new-place" placeholder="Название"
-                        required>
+                        minlength="2" maxlength="30" required>
+                    <!--сообщение об ошибке-->
+                    <span class="form__field-error" id="new-place-error"></span>
                     <input class="form__field" type="url" id="new-photo" name="new-photo"
                         placeholder="Ссылка на картинку" required>
+                    <!--сообщение об ошибке-->
+                    <span class="form__field-error" id="new-photo-error"></span>
                 </fieldset>
                 <!--кнопка сохранить-->
                 <button class="form__submit-button" type="submit">Сохранить</button>
@@ -117,6 +126,7 @@
     <!--скрипт-->
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
 
 </body>
 
