@@ -6,6 +6,7 @@
     margin: 0;
     border: #FFFFFF;
     cursor: pointer;
+    outline: none;
 }
 
 @media screen and (max-width:450px) {
