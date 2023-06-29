@@ -6,4 +6,8 @@
     color: #FF0000;
     border: none;
     opacity: 0;
+    display: block;
+    position: absolute;
+    max-width: 300px;
+    padding-top: 5px;
 }
