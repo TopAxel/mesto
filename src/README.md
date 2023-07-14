@@ -18,6 +18,9 @@
 * grid 
 * подключение шрифтов
 * javascript
+* ООП (Классы)
+* Webpack
+* Npm
 
  
 
