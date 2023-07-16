@@ -47,12 +47,11 @@ buttonOpenProfile.addEventListener('click', () => {
     popupName.value = userInfo.getUserInfo().userName;
     popupProfessional.value = userInfo.getUserInfo().userInfo;
 });
-
-// Отправка формы редактирования профиля
-function handleProfileFormSubmit() {
+// отправка формы редактирования профиля
+function handleProfileFormSubmit(userInfoData) {
     userInfo.setUserInfo({
-        userName: popupName.value,
-        userInfo: popupProfessional.value,
+        userName: userInfoData['user-name'], 
+        userInfo: userInfoData['user-job'],
     });
     profilePopup.close();
 }
@@ -105,8 +104,8 @@ sectionInstance.render();
 // Отправка формы добавления карточки
 function handleCardFormSubmit(cardInfo) {
     const cardData = {
-        name: cardInfo["new-place"],
-        link: cardInfo["new-photo"],
+        name: cardInfo['new-place'],
+        link: cardInfo['new-photo'],
     };
     const cardElement = createCard(cardData, '.card__template');
     sectionInstance.addItem(cardElement);
