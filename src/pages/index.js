@@ -1,11 +1,11 @@
-import { Card } from './scripts/Card.js';
-import { FormValidator } from './scripts/FormValidator.js';
-import { initialCards } from './scripts/initialCards.js';
-import { PopupWithForm } from './scripts/PopupWithForm.js';
-import { PopupWithImage } from './scripts/PopupWithImage.js';
-import { Section } from './scripts/Section.js';
-import { UserInfo } from './scripts/UserInfo.js';
-import '../src/pages/index.css';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { initialCards } from '../cards/initialCards.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { Section } from '../components/Section.js';
+import { UserInfo } from '../components/UserInfo.js';
+import '../pages/index.css';
 
 //кнопки
 const profile = document.querySelector('.profile');
@@ -20,12 +20,12 @@ const formElementCard = popupAddCardProfile.querySelector('.form');
 const formList = document.querySelectorAll('.form');
 
 //инпуты
-const profileTitle = profile.querySelector('.profile__title');
-const profileSubtitle = profile.querySelector('.profile__subtitle');
+// const profileTitle = profile.querySelector('.profile__title');
+// const profileSubtitle = profile.querySelector('.profile__subtitle');
 const popupName = profileForm.querySelector('#user-name');
 const popupProfessional = profileForm.querySelector('#user-job');
-const popupPlaceName = formElementCard.querySelector('#new-place');
-const popupPhotoName = formElementCard.querySelector('#new-photo');
+// const popupPlaceName = formElementCard.querySelector('#new-place');
+// const popupPhotoName = formElementCard.querySelector('#new-photo');
 
 // Карточки
 const cardsContainer = document.querySelector('.element');
@@ -44,23 +44,16 @@ const userInfo = new UserInfo({
 
 buttonOpenProfile.addEventListener('click', () => {
     profilePopup.open();
-    userInfo.setUserInfo({
-        userName: profileTitle.textContent,
-        userInfo: profileSubtitle.textContent,
-    });
-    popupName.value = profileTitle.textContent;
-    popupProfessional.value = profileSubtitle.textContent;
+    popupName.value = userInfo.getUserInfo().userName;
+    popupProfessional.value = userInfo.getUserInfo().userInfo;
 });
 
 // Отправка формы редактирования профиля
 function handleProfileFormSubmit() {
-    const userInfoData = profilePopup._getInputValues();
     userInfo.setUserInfo({
-        userName: userInfoData['user-name'],
-        userInfo: userInfoData['user-job'],
+        userName: popupName.value,
+        userInfo: popupProfessional.value,
     });
-    profileTitle.textContent = popupName.value;
-    profileSubtitle.textContent = popupProfessional.value;
     profilePopup.close();
 }
 
@@ -109,23 +102,13 @@ const sectionInstance = new Section(
 
 sectionInstance.render();
 
-// Добавление новой карточки
-function createNewCard(cardData) {
-    const cardElement = createCard(
-        cardData,
-        '.card__template',
-        handlePreviewImage
-    );
-    return cardElement;
-}
-
 // Отправка формы добавления карточки
-function handleCardFormSubmit() {
+function handleCardFormSubmit(cardInfo) {
     const cardData = {
-        name: popupPlaceName.value,
-        link: popupPhotoName.value,
+        name: cardInfo["new-place"],
+        link: cardInfo["new-photo"],
     };
-    const cardElement = createNewCard(cardData);
+    const cardElement = createCard(cardData, '.card__template');
     sectionInstance.addItem(cardElement);
     addCardPopupWithForm.close();
 }

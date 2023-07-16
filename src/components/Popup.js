@@ -1,16 +1,22 @@
 export class Popup {
-    // конструктор 
+    // конструкто
     constructor(popupSelector) {
         this._popup = document.querySelector(popupSelector);
         this._popupCloseButton = this._popup.querySelector('.popup__close-icon');
+        this._handleEscClose = this._handleEscClose.bind(this);
+        this._closeOverlayListener = this._closeOverlayListener.bind(this);
     }
     // Метод открытия popup
     open() {
         this._popup.classList.add('popup_opened');
+        document.addEventListener('keydown', this._handleEscClose);
+        document.addEventListener('mousedown', this._closeOverlayListener);
     }
     // Метод закрытия popup
     close() {
         this._popup.classList.remove('popup_opened');
+        document.removeEventListener('keydown', this._handleEscClose);
+        document.removeEventListener('mousedown', this._closeOverlayListener);
     }
     // метод закрытия по кнопке Escape
     _handleEscClose(event) {
@@ -18,17 +24,14 @@ export class Popup {
             this.close();
         }
     }
-
+    // метод закрытия по overlay
+    _closeOverlayListener(event) {
+        if (event.target === this._popup) {
+            this.close();
+        }
+    }
+    // слушатель
     setEventListeners() {
-        // Функция закрытия по оверлею
-        const closeOverlayListener = function (evt) {
-            if (evt.target === this._popup) {
-                this.close();
-            }
-        };
-
-        document.addEventListener('keydown', this._handleEscClose.bind(this));
-        document.addEventListener('mousedown', closeOverlayListener.bind(this));
         this._popupCloseButton.addEventListener('click', () => this.close());
     }
 }

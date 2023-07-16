@@ -20,6 +20,7 @@ export class PopupWithForm extends Popup {
 
         return formValues;
     }
+
     // Связываем с методом getInputValues, добавляем обработчик клика и обработчик сабмита формы
     setEventListeners() {
         // Перезаписывает родительский метод setEventListeners
