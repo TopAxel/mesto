@@ -16,12 +16,14 @@
             <!--логотип-->
             <img class="header__logo" src="<%=require('./image/logo/Vector.svg')%>" alt="логотип mesto Russia">
         </header>
-    
+
         <main class="content">
             <!--секция profile-->
             <section class="profile">
                 <!--фото (аватар) -->
                 <img class="profile__avatar" src="<%=require('./image/avatar/avatar.jpg')%>" alt="фото профиля">
+                <!-- кнопка изминения аватара -->
+                <button class="profile__avatar-button" type="button" aria-label="редактировать аватар"></button>
                 <!--информация-->
                 <div class="profile__info">
                     <!--имя-->
@@ -99,7 +101,7 @@
     <!--Попап открытая картинка-->
     <div class="popup popup_open_image">
         <!--контейнер-->
-        <div class="popup__conteiner">
+        <div class="popup__conteiner_image">
             <!--Картинка-->
             <figure class="opened-image">
                 <img class="opened-image__image" src="#" alt="">
@@ -108,6 +110,43 @@
             </figure>
             <!--кнопка закрыть-->
             <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
+        </div>
+    </div>
+    <!-- попап изменение аватара -->
+    <div class="popup popup_change_avatar">
+        <!--контейнер-->
+        <div class="popup__conteiner">
+            <!--формы для заполнения-->
+            <form class="form" name="user-avatar" novalidate>
+                <!--название попапа-->
+                <h2 class="form__title">Обновить аватар</h2>
+                <!--форма для заполнения-->
+                <fieldset class="form__edit">
+                    <input class="form__field" type="url" id="new-avatar" name="new-avatar"
+                        placeholder="Введите ссылку на аватар" minlength="2" maxlength="200" required>
+                    <!--сообщение об ошибке-->
+                    <span class="form__field-error" id="new-avatar-error"></span>
+                </fieldset>
+                <!--кнопка сохранить-->
+                <button class="form__submit-button" type="submit">Сохранить</button>
+            </form>
+            <!--кнопка закрыть-->
+            <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
+        </div>
+    </div>
+    <!-- попап удаления карточки -->
+    <div class="popup popup_delete_cards">
+        <!--контейнер-->
+        <div class="popup__conteiner">
+            <!--кнопка закрыть-->
+            <button class="popup__close-icon" type="button" aria-label="закрыть"></button>
+            <!-- форма -->
+            <form class="form" name="delete-cards" novalidate>
+                <!--название попапа-->
+                <h2 class="form__title">Вы уверены?</h2>
+                <!--кнопка сохранить-->
+                <button class="form__submit-button form__submit-button_hover" type="submit">Да</button>
+            </form>
         </div>
     </div>
     <!--template-->
@@ -120,7 +159,11 @@
             <!-- подпись -->
             <h2 class="element__title"></h2>
             <!-- Лайк -->
-            <button class="element__like-icon" type="button" aria-label="нравится"></button>
+            <ul class="element__like-box">
+                <button class="element__like-icon" type="button" aria-label="нравится"></button>
+                <!-- счетчик лайков -->
+                <span class="element__like-counter">0</span>
+            </ul>
         </li>
     </template>
 
