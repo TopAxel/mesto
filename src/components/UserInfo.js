@@ -21,5 +21,11 @@ export class UserInfo {
     this._username.textContent = data.name;
     this._job.textContent = data.about;
     this._avatar.src = data.avatar;
+
   }
+
+  setUserAvatar(data) {
+    this._avatar.src = data.avatar;
+  }
+
 }

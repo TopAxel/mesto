@@ -21,11 +21,10 @@ const popupEditAvatar = document.querySelector('.popup_change_avatar');
 const profileForm = popupEditProfile.querySelector('.form');
 const formElementCard = popupAddCardProfile.querySelector('.form');
 const formElementAvatar = popupEditAvatar.querySelector('.form');
-const formList = document.querySelectorAll('.form');
 
 //инпуты
-const popupName = profileForm.querySelector('#user-name');
-const popupProfessional = profileForm.querySelector('#user-job');
+const popupName = profileForm.querySelector('#name');
+const popupProfessional = profileForm.querySelector('#job');
 // аватар
 const avatar = document.querySelector('.profile__avatar');
 
@@ -42,10 +41,10 @@ const settings = {
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-71',
     headers: {
-      authorization: '839b9b9e-ee93-4e28-b0f6-59cf94fe7df3',
-      'Content-Type': 'application/json'
+        authorization: '839b9b9e-ee93-4e28-b0f6-59cf94fe7df3',
+        'Content-Type': 'application/json'
     }
-  });
+});
 
 let userId;
 
@@ -54,6 +53,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     .then(([initialCards, userData]) => {
         userInfo.setUserInfo(userData);
         userId = userData._id;
+        initialCards.reverse();
         cardsList.renderItems(initialCards);
     })
     .catch((err) => {
@@ -91,6 +91,7 @@ editProfilePopup.setEventListeners();
 function fillInEditProfileFormInputs({ username, job }) {
     popupName.value = username;
     popupProfessional.value = job;
+
 }
 
 
@@ -101,7 +102,7 @@ const editAvatarPopup = new PopupWithForm({
         editAvatarPopup.loading(true);
         api.editAvatar(data)
             .then((data) => {
-                avatar.src = data.avatar;
+                userInfo.setUserAvatar(data.avatar);
                 editAvatarPopup.close();
             })
             .catch((err) => {
