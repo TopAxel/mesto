@@ -29,7 +29,7 @@
 .popup__conteiner{box-shadow:0 0 25px rgba(0,0,0,.15);max-width:430px;position:relative;width:100%}@media screen and (max-width:549px){.popup__conteiner{max-width:282px}}
 .popup__close-icon{background-color:transparent;background-image:url(2ceb783afbab75916ddc.svg);border:0;cursor:pointer;height:32px;padding:0;position:absolute;right:-40px;top:-40px;width:32px}.popup__close-icon:hover{opacity:.6;transition:all .1s ease-in}@media screen and (max-width:549px){.popup__close-icon{background-size:contain;height:20px;right:0;top:-36px;width:20px}}
 .popup_opened{opacity:1;visibility:visible}
-.popup__conteiner_image{box-shadow:0 0 25px rgba(0,0,0,.15);position:relative}
+.popup__conteiner-image{box-shadow:0 0 25px rgba(0,0,0,.15);position:relative}
 .opened-image{margin:0}
 .opened-image__image{max-height:75vh;max-width:75vw}
 .opened-image__signature{font-size:12px;font-style:normal;font-weight:400;line-height:1.21;margin-top:10px}
