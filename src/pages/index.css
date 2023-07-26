@@ -28,6 +28,7 @@
 @import url(../blocks/element/__like-icon/element__like-icon.css);
 @import url(../blocks/element/__like-icon/_active/element__like-icon_active.css);
 @import url(../blocks/element/__delete/element__delete-icon.css);
+@import url(../blocks/element/__delete/_active/element__delete-icon_active.css);
 @import url(../blocks/element/__like-counter/element__like-counter.css);
 @import url(../blocks/element/__like-box/element__like-box.css);
 /* footer */

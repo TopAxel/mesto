@@ -55,14 +55,13 @@ export class FormValidator {
       this._enableButton();
     }
   }
-  
+
   // устанавливает все обработчики
   _setEventListeners() {
     const inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
-      this._formElement.addEventListener('reset', () => {
+    this._formElement.addEventListener('reset', () => {
       this._disableButton()
     })
-
     this._toggleButtonState();
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
@@ -79,7 +78,3 @@ export class FormValidator {
     this._setEventListeners();
   }
 }
-
-
-
-

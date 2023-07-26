@@ -1,19 +1,25 @@
 export class UserInfo {
-  // конструктор
-  constructor({ userNameSelector, userInfoSelector }) {
-    this._userName = document.querySelector(userNameSelector);
-    this._userInfo = document.querySelector(userInfoSelector);
+  constructor({ username, job, avatar }) {
+    this._username = document.querySelector(username);
+    this._job = document.querySelector(job);
+    this._avatar = document.querySelector(avatar);
   }
-  // Метод возвращает объект с данными пользователя
+
+  // возвращает объект с данными пользователя
   getUserInfo() {
-    return {
-      userName: this._userName.textContent,
-      userInfo: this._userInfo.textContent,
-    };
+    const userInfo = {
+      username: this._username.textContent,
+      job: this._job.textContent,
+      avatar: this._avatar.src
+    }
+
+    return userInfo;
   }
-  // Метод принимает новые данные пользователя и добавляет их на страницу
-  setUserInfo({ userName, userInfo }) {
-    this._userName.textContent = userName;
-    this._userInfo.textContent = userInfo;
+
+  // принимает новые данные пользователя и добавляет их на страницу
+  setUserInfo(data) {
+    this._username.textContent = data.name;
+    this._job.textContent = data.about;
+    this._avatar.src = data.avatar;
   }
 }

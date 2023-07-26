@@ -1,39 +1,46 @@
-import { Popup } from './Popup.js';
+import { Popup } from "./Popup.js";
+
 export class PopupWithForm extends Popup {
-    // конструктор
-    constructor(popupSelector, { submitFormCallback }) {
-        super(popupSelector);
-        this._submitFormCallback = submitFormCallback;
-        this._popupForm = this._popup.querySelector('.form');
-        this._inputList = Array.from(
-            this._popupForm.querySelectorAll('.form__field')
-        );
-        this._submitButton = this._popup.querySelector('.form__submit-button');
-    }
-    // Метод собирает данные всех полей формы
-    _getInputValues() {
-        const formValues = {};
-        for (let index = 0; index < this._inputList.length; index++) {
-            const { name, value } = this._inputList[index];
-            formValues[name] = value;
-        }
+  constructor({ popupSelector, handleFormSubmit }) {
+    super(popupSelector);
+    this._handleFormSubmit = handleFormSubmit;
+    this._popupForm = this._popup.querySelector('.form');
+    this._inputList = this._popupForm.querySelectorAll('.form__field');
+    this._submitBtn = this._popupForm.querySelector('.form__submit-button');
+    this._submitBtnText = this._submitBtn.textContent;
+  }
 
-        return formValues;
-    }
+  // Получаем данные из формы
+  _getInputValues() {
+    this._formValues = {};
+    this._inputList.forEach(input => {
+      this._formValues[input.name] = input.value;
+    })
 
-    // Связываем с методом getInputValues, добавляем обработчик клика и обработчик сабмита формы
-    setEventListeners() {
-        // Перезаписывает родительский метод setEventListeners
-        super.setEventListeners();
-        this._popupForm.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-            this._submitFormCallback(this._getInputValues());
-        });
-    }
+    return this._formValues;
+  }
 
-    // Метод закрытия popup (перезаписывает родителя)
-    close() {
-        super.close();
-        this._popupForm.reset();
+  // Устанавливаем слушатели формы
+  setEventListeners() {
+    super.setEventListeners();
+    this._popupForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
+    })
+  }
+
+  // Закрытие попапа + сброс инпутов
+  close() {
+  super.close();
+  this._popupForm.reset();
+  }
+
+  // Изменяем состояние кнопки во время загрузки
+  loading(isLoading) {
+    if (isLoading) {
+      this._submitBtn.textContent = 'Сохранение...'
+    } else {
+      this._submitBtn.textContent = this._submitBtnText;
     }
+  }
 }
